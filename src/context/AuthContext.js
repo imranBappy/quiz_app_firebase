@@ -14,15 +14,16 @@ export function useAuth() {
 }
 export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState();
+
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      currentUser(user);
+      setCurrentUser(user);
       setLoading(false);
     });
     return unsubscribe;
-  });
+  }, []);
   const signup = async (email, password, username) => {
     const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password);

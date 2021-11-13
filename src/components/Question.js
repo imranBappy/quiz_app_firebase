@@ -5,7 +5,7 @@ const Question = () => {
   return (
     <div className={classes.question}>
       <div className={classes.qtitle}>
-        <span class="material-icons-outlined"> help_outline </span>
+        <span className="material-icons-outlined"> help_outline </span>
         Here goes the question from Learn with Sumit?
       </div>
       <Answers />

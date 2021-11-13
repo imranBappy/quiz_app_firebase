@@ -5,7 +5,7 @@ import classes from "../styles/Nav.module.css";
 import Account from "./Account";
 const Nav = () => {
   return (
-    <nav class={classes.nav}>
+    <nav className={classes.nav}>
       <ul>
         <li>
           <Link to="/" className={classes.brand}>
