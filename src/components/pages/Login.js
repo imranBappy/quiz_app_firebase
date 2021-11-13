@@ -2,6 +2,7 @@ import classes from "../../styles/Login.module.css";
 import Button from "../Button";
 import Form from "../Form";
 import Illustration from "../Illustration";
+import Info from "../Info";
 import TextInput from "../TextInput";
 
 export default function Signup() {
@@ -20,11 +21,15 @@ export default function Signup() {
 
           <TextInput type="password" placeholder="Enter password" icon="lock" />
 
-          <Button>Submit Now</Button>
-
-          <div className="info">
-            Don't have an account? <a href="signup.html">Signup</a> instead.
-          </div>
+          <Button>
+            <span>Submit Now</span>
+          </Button>
+          <Info
+            path="/signup"
+            message="Don't have an account?"
+            name="Signup"
+            text="instead."
+          />
         </Form>
       </div>
     </>

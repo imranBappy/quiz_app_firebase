@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Info = ({ message, name, text }) => {
+const Info = ({ message, name, text, path }) => {
   return (
     <div className="info">
-      {message} <a href="login.html">{name}</a> {text}
+      {message} <Link to={path}>{name}</Link> {text}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/login.svg";
 import classes from "../styles/Nav.module.css";
 import Account from "./Account";
@@ -7,10 +8,10 @@ const Nav = () => {
     <nav class={classes.nav}>
       <ul>
         <li>
-          <a href="index.html" className={classes.brand}>
+          <Link to="/" className={classes.brand}>
             <img src={logo} alt="Learn with Sumit Logo" />
             <h3>Learn with Imran</h3>
-          </a>
+          </Link>
         </li>
       </ul>
       <Account />
