@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
     return signOut(auth);
   };
   const value = {
-    ...currentUser,
+    currentUser,
     signup,
     login,
     logout,
