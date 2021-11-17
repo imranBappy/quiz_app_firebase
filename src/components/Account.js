@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from "../styles/Account.module.css";
 import { useAuth } from "../context/AuthContext";
+import classes from "../styles/Account.module.css";
 const Account = () => {
   const { currentUser, logout } = useAuth();
   return (
@@ -9,16 +9,24 @@ const Account = () => {
       <span className="material-icons-outlined" title="Account">
         account_circle
       </span>
-      {currentUser && <strong>{currentUser.displayName}</strong>}
+
+      {currentUser && (
+        <Link to={`/${currentUser.uid}`}>
+          <strong>{currentUser.displayName}</strong>{" "}
+        </Link>
+      )}
 
       {currentUser ? (
-        <span
-          onClick={logout}
-          className="material-icons-outlined"
-          title="Logout"
-        >
-          logout
-        </span>
+        <>
+          <Link to={`/dashboard`}>Dashboard</Link>
+          <span
+            onClick={logout}
+            className="material-icons-outlined"
+            title="Logout"
+          >
+            logout
+          </span>
+        </>
       ) : (
         <>
           <Link to={`/signup`}>Signup</Link>
