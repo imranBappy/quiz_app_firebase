@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import "../styles/App.css";
 import Layout from "./Layout";
 import Dashboard from "./pages/Dashboard";
+import EditProfile from "./pages/EditProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -23,10 +24,12 @@ function App() {
           <Route path="/result" element={<Result />} />
           <Route path="/dashboard" element={<Dashboard />} />
 
+          <Route path="/edit/:id" element={<EditProfile />} />
           <Route
             path={user.currentUser ? `/:me` : "/login"}
             element={<Profile user={user.currentUser} />}
           />
+
           <Route path="*" element={<h4>Page Not Found</h4>} />
         </Routes>
       </Layout>
