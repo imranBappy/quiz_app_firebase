@@ -1,40 +1,25 @@
-import React, { useEffect, useState } from "react";
-import useVideo from "../../hooks/useVideo";
+import React from "react";
+import useGetVideo from "../../hooks/useGetVideo";
+import InputVideo from "../InputVideo";
 
 const Dashboard = () => {
-  const [img, setImg] = useState("");
-  const handleChange = (e) => {
-    setImg(e.target.files[0]);
-  };
-  const { sendVideo, fileGet, imgURL } = useVideo();
-  const handleSubmit = () => {
-    sendVideo(img, "video.mp4");
-  };
-  const fetchFile = () => {
-    fileGet("/video.mp4");
-  };
-  console.log({ imgURL });
-  useEffect(() => {
-    fetchFile();
-  }, []);
-  console.log({ img });
+  const videos = useGetVideo();
+
   return (
     <div>
-      <input onClick={handleChange} type="file" />
-      <img src={imgURL} alt="Learn with Sumit Logo" />
-
-      {imgURL && (
-        <video width="320" height="240" controls>
-          <source src={imgURL} type="video/mp4" />
+      <InputVideo />
+      {videos.map((video) => (
+        <video
+          preload="auto"
+          width="320"
+          poster={video.thumbnail}
+          height="240"
+          controls
+        >
+          <source src={video.video} type="video/mp4" />
+          Sorry, your browser doesn't support embedded videos.
         </video>
-      )}
-      <br />
-      <br />
-
-      <button onClick={handleSubmit}>Send File</button>
-      <br />
-
-      <button onClick={fetchFile}>Fetch File</button>
+      ))}
     </div>
   );
 };

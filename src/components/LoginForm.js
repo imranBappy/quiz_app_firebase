@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import Info from "../components/Info";
@@ -57,6 +57,7 @@ export default function LoginForm() {
         name="Signup"
         text="instead."
       />
+      <Link to="/reset">Forget you password?</Link>
     </Form>
   );
 }

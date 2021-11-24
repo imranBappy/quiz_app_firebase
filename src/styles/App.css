@@ -75,3 +75,15 @@ h4 {
     width: 90%;
   }
 }
+.file__input__wrap {
+  display: flex;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+.file__input__wrap > div {
+  flex-basis: 300px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  margin-right: 50px;
+  width: 100% !important;
+}

@@ -4,11 +4,11 @@ import { useAuth } from "../context/AuthContext";
 import "../styles/App.css";
 import Layout from "./Layout";
 import Dashboard from "./pages/Dashboard";
-import EditProfile from "./pages/EditProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Quiz from "./pages/Quiz";
+import Reset from "./pages/Reset";
 import Result from "./pages/Result";
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/reset" element={<Reset />} />
 
-          <Route path="/edit/:id" element={<EditProfile />} />
           <Route
             path={user.currentUser ? `/:me` : "/login"}
             element={<Profile user={user.currentUser} />}

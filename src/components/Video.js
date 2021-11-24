@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "../styles/Videos.module.css";
-const Video = ({ title, id, noq }) => {
+const Video = ({ title, id, noq, thumbnail }) => {
   return (
     <Link to="quiz">
       <div className={classes.video}>
         <img
-          src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+          src={
+            thumbnail
+              ? thumbnail
+              : `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
+          }
           alt={title}
         />
         <p>{title}</p>

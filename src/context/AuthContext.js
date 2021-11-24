@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -15,9 +16,9 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState();
+  const auth = getAuth();
 
   useEffect(() => {
-    const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
@@ -25,18 +26,22 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
   const signup = async (email, password, username) => {
-    const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, { displayName: username });
     const user = auth.currentUser;
     setCurrentUser({ ...user });
   };
+
   const login = (email, password) => {
     const auth = getAuth();
     return signInWithEmailAndPassword(auth, email, password);
   };
+  const forgetPassword = async (email, password) => {
+    return await sendPasswordResetEmail(auth, email, {
+      url: "http://localhost:3000/login",
+    });
+  };
   const logout = (email, password) => {
-    const auth = getAuth();
     return signOut(auth);
   };
   const value = {
@@ -44,6 +49,7 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    forgetPassword,
   };
   return (
     <AuthContext.Provider value={value}>

@@ -22,3 +22,9 @@
   text-align: center;
   padding: 10px 0px;
 }
+.thumbnail__img {
+  width: 100%;
+}
+.input__video {
+  width: 100%;
+}
